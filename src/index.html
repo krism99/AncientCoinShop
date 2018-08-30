@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Ancient Coins Shop</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-8 col-sm-push-2">
+          <h1 class="text-center" align="center">Ancient Coins Shop</h1>
+          <div class="row" id="acc-status" style="display: none;"><p class="text-center">Your address:  Your Balance: </p></div> 
+          <hr/>
+          <br/> 
+        </div>
+    </div>     
+
+    <div class="btn-group" id="btn-group" role="group" aria-label="Basic example"  style="display: none;">
+        <button type="button" class="btn btn-adminm"  disabled>Admin Maintenance</button>
+        <button type="button" class="btn btn-shopkpm" disabled>Shopkeep Maintenance</button>
+        <button type="button" class="btn btn-shopm" disabled>Shop Maintenance</button>
+        <button type="button" class="btn btn-productm" disabled>Product Maintenance</button>
+        <button type="button" class="btn btn-coinm" disabled>Available Coins</button>     
+        <button type="button" class="btn btn-browse" >Browse Shops</button>     
+       <!-- <button type="button" class="btn btn-shopper" disabled>Browse My Coins</button>  -->
+    </div>
+
+    
+    <div class="container">
+      <div class="row" id="btn-startit" style="display:inline;">
+        <div class="col-sm-3"></div>
+          <div class="col-sm-6" align="center">
+            <button type="button" data-id="btn-strtit" class="btn btn-startit">Click Button to get started</button>
+          </div>
+        <div class="col-sm-3"></div>  
+      </div>         
+    </div>
+      <div class="container">
+        <div id="PageTitle" class="row" style="display: none;">
+          <h2>Menu</h2>
+        </div>
+      </div>
+    
+
+
+      <div id="adminRow" class="row">
+        <!-- admin MAINT LOADS HERE -->
+      </div>
+
+      <div id="shopkeepRow" class="row">
+        <!-- shopkeep MAINT LOADS HERE -->
+      </div>
+
+      <div id="shopRow" class="row">
+        <!-- shop MAINT LOADS HERE -->
+      </div>
+
+      <div id="coinRow" class="row">
+          <!-- coin MAINT LOADS HERE -->
+        </div>
+
+      <div id="productRow" class="row">
+        <!-- products LOAD HERE -->
+      </div>
+
+      <div id="productbuyRow" class="row">
+          <!-- product buy LOADS HERE -->
+        </div>
+
+        <div id="shopperRow" class="row">
+            <!-- shopper LOADS HERE -->
+          </div>
+
+      <div id="adminTemplate" style="display: none;">
+        <div class="col-sm-12 col-md-12 col-lg-12">       
+          <div class="panel panel-default panel-admin">
+            <div class="panel-heading">
+              <h3 class="panel-title">Scrappy</h3>
+            </div>
+            <div class="panel-body">
+              <strong>Admin Address</strong>: <span class="admin-name">Default</span><br/>   
+            </div>
+          </div>
+        </div>
+      </div>  
+
+      <div id="adminaddformTemplate" class="container" style="display: none;">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <label for="basic-url">Add New Admin</label>
+            <div class="input-group mb-3">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Name</span>
+              </div>              
+              <input type="text" class="form-control" id="adminaddformname" aria-describedby="basic-addon3">
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Address</span>
+                </div> 
+              <input type="text" class="form-control" id="adminaddformaddr" aria-describedby="basic-addon3">
+              <button class="btn btn-default btn-add-new-admin" type="button" data-id="0">Add</button>
+            </div>
+            <p></p>
+          </div> 
+        </div>
+
+        <div id="admindelformTemplate" class="container" style="display: none;">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+            <label for="basic-url">Delete Admin</label>
+            <div class="input-group mb-3">              
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Address</span>
+                </div> 
+              <input type="text" class="form-control" id="admindelformaddr" aria-describedby="basic-addon3">
+              <button class="btn btn-default btn-del-admin" type="button" data-id="0">Delete</button>
+            </div>
+            <p></p>
+          </div> 
+        </div>
+
+
+        <div id="shopkeepTemplate" style="display: none;">
+          <div class="col-sm-12 col-md-12 col-lg-12">       
+            <div class="panel panel-default panel-shopkeep">
+              <div class="panel-heading">
+                <h3 class="panel-title">Scrappy</h3>
+              </div>
+              <div class="panel-body">
+                <strong>shopkeep Address</strong>: <span class="shopkeep-name">Default</span><br/>   
+              </div>
+            </div>
+          </div>
+        </div>  
+  
+        <div id="shopkeepaddformTemplate" class="container" style="display: none;">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label for="basic-url">Add New shopkeep</label>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Name</span>
+                </div>              
+                <input type="text" class="form-control" id="shopkeepaddformname" aria-describedby="basic-addon3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Address</span>
+                  </div> 
+                <input type="text" class="form-control" id="shopkeepaddformaddr" aria-describedby="basic-addon3">
+                <button class="btn btn-default btn-add-new-shopkeep" type="button" data-id="0">Add</button>
+              </div>
+              <p></p>
+            </div> 
+          </div>
+  
+          <div id="shopkeepdelformTemplate" class="container" style="display: none;">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <label for="basic-url">Delete shopkeep</label>
+              <div class="input-group mb-3">              
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Address</span>
+                  </div> 
+                <input type="text" class="form-control" id="shopkeepdelformaddr" aria-describedby="basic-addon3">
+                <button class="btn btn-default btn-del-shopkeep" type="button" data-id="0">Delete</button>
+              </div>
+              <p></p>
+            </div> 
+          </div>
+
+
+
+
+      <div id="shopTemplate" style="display: none;">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="panel panel-default panel-shop">
+            <div class="panel-heading">
+              <h3 class="panel-title">Scrappy</h3>
+            </div>
+            <div class="panel-body">            
+              <strong>Shop Address</strong>: <span class="shop-name">Default</span><br/>
+              <strong>Shop ID</strong>: <span class="shop-id">0</span><br/>                                   
+              <strong>Active Products Count</strong>: <span class="productcount">999</span><br/>                                   
+              <strong>Owner Name</strong>: <span class="shop-owner-name">999</span><br/>  
+              <strong>Owner ID</strong>: <span class="shop-owner-id">1</span><br/>  
+              <strong>Owner Address</strong>: <span class="shop-owner-address">0x0</span><br/>     
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="shopaddformTemplate" class="container" style="display: none;">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <label for="basic-url">Add New Shop</label>
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">Name</span>
+            </div>              
+            <input type="text" class="form-control" id="shopaddformname" aria-describedby="basic-addon3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Address</span>
+              </div> 
+            <input type="text" class="form-control" id="shopaddformaddr" aria-describedby="basic-addon3">
+            <button class="btn btn-default btn-add-new-shop" type="button" data-id="0">Add</button>
+          </div>
+          <p></p>
+        </div> 
+      </div>
+
+      <div id="shopdelformTemplate" class="container" style="display: none;">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+          <label for="basic-url">Delete Shop</label>
+          <div class="input-group mb-3">              
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Address</span>
+              </div> 
+            <input type="text" class="form-control" id="shopdelformaddr" aria-describedby="basic-addon3">
+            <button class="btn btn-default btn-del-shop" type="button" data-id="0">Delete</button>
+          </div>
+          <p></p>
+        </div> 
+      </div>
+
+      <!--
+      <div id="shopTemplate" style="display: none;">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="panel panel-default panel-shop">
+            <div class="panel-heading">
+              <h3 class="panel-title">Scrappy</h3>
+            </div>
+            <div class="panel-body">            
+              <strong>Shop Address</strong>: <span class="shop-name">Default</span><br/>
+              <strong>Active Products Count</strong>: <span class="productcount">999</span><br/>                                   
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+      <div id="shopaddformTemplate" class="container" style="display: none;">
+        <label for="basic-url">Add new Shop</label>
+        <div class="input-group">          
+            <input type="text" class="form-control" id="shopaddform" aria-describedby="basic-addon3">
+            <button class="btn btn-default btn-add-new-shop" type="button" data-id="0">Add</button>
+            <p></p>
+        </div>          
+      </div>
+
+      <div id="shopdelformTemplate" class="container" style="display: none;">
+        <label for="basic-url">Delete Shop</label>
+        <div class="input-group">          
+            <input type="text" class="form-control" id="shopdelform" aria-describedby="basic-addon3">
+            <button class="btn btn-default btn-del-shop" type="button" data-id="0">Delete</button>
+            <p></p>
+        </div>          
+      </div>
+    -->
+
+      <div id="coinTemplate" style="display: none;">
+          <div class="col-sm-12 col-md-12 col-lg-12">
+          <div class="panel panel-default panel-shop">
+            <div class="panel-heading">
+              <h3 class="panel-title">Scrappy</h3>
+            </div>
+            <div class="panel-body">            
+              <strong>Coin Id</strong>: <span class="coin-id">Coin Id</span><br/>              
+              <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="https://animalso.com/wp-content/uploads/2017/01/Golden-Retriever_6.jpg" data-holder-rendered="true">                                   
+            </div>
+          </div>
+        </div>
+      </div> 
+
+
+
+
+      <div id="productTemplate" style="display: none;" >
+        <div class="col-sm-6 col-md-4 col-lg-3">
+          <div class="panel panel-default panel-product">
+            <div class="panel-heading">
+              <h3 class="panel-title">Scrappy</h3>
+            </div>
+            <div class="panel-body">
+              <strong>ProductId</strong>: <span class="product-id">Product Id</span><br/> <!-- Its index-->
+              <strong>Coin Id</strong>: <span class="coin-id">Coin ID</span><br/>
+              <strong>Quantity Available</strong>: <span class="quantity">Quantity Available</span><br/>
+              <strong>Price</strong>: <span class="price">999</span><br/>       
+              <strong>Status</strong>: <span class="status">Active</span><br/>                     
+              <strong>Owner Name</strong>: <span class="owner-name">Owner 1</span><br/>     
+              <strong>Owner Address</strong>: <span class="owner-address">0x0</span><br/>  
+              <strong>Owner Type</strong>: <span class="owner-type">SHOP or SHOPPER</span><br/>     
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="productaddformTemplate" class="container" style="display: none;">
+        <label for="basic-url">Add new Product</label>
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="basic-addon3">Name</span>
+          </div>              
+          <input type="text" class="form-control" id="productaddformname" aria-describedby="basic-addon3">
+          <div class="input-group-prepend" >
+              <span class="input-group-text" id="basic-addon3" >Coin ID (Click on Available Coins Button in Nav Menu to see list)</span>
+            </div> 
+          <input type="text" class="form-control" id="productaddformcoinid" aria-describedby="basic-addon3">
+          <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">Quantity</span>
+            </div> 
+          <input type="text" class="form-control" id="productaddformquantity" aria-describedby="basic-addon3">
+          <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">Price</span>
+            </div> 
+          <input type="text" class="form-control" id="productaddformprice" aria-describedby="basic-addon3">         
+          <button class="btn btn-default btn-add-new-product" type="button" data-id="0">Add</button>
+          <p></p>
+        </div>                 
+      </div>
+
+
+      <div id="productupdformTemplate" class="container" style="display: none;">
+          <label for="basic-url">Update a Product's Status, Quantity or Price</label>
+          <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">Product ID</span>
+          </div>              
+           <input type="text" class="form-control" id="productupdformid" aria-describedby="basic-addon3">          
+          <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Quantity</span>
+           </div> 
+          <input type="text" class="form-control" id="productupdformquant" aria-describedby="basic-addon3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Price</span>
+              </div> 
+            <input type="text" class="form-control" id="productupdformprice" aria-describedby="basic-addon3">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Status</span>
+           </div> 
+          <input type="text" class="form-control" id="productupdformstatus" aria-describedby="basic-addon3">
+
+            <button class="btn btn-default btn-update-product" type="button" data-id="0">Update</button>
+            <p></p>
+          </div> 
+        </div>
+
+        <div id="withdrawTemplate" class="container" style="display: none;">
+            <label for="basic-url">Send Money to Shopkeep</label>
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon3">Amount</span>
+            </div>              
+             <input type="text" class="form-control" id="withdrawamount" aria-describedby="basic-addon3">        
+              <button class="btn btn-default btn-withdraw" type="button" data-id="0">Transfer Money</button>
+              <p></p>
+            </div> 
+          </div>
+
+
+
+        <div id="browseproductTemplate" style="display: none;" >
+            <div class="col-sm-6 col-md-4 col-lg-3">
+              <div class="panel panel-default panel-browseproduct">
+                <div class="panel-heading">
+                  <h3 class="panel-title">Scrappy</h3>
+                </div>
+                <div class="panel-body">
+                  <strong>ProductId</strong>: <span class="product-id">Product Id</span><br/> <!-- Its index-->
+                  <strong>Coin Id</strong>: <span class="coin-id">Coin ID</span><br/>
+                  <strong>Quantity Available</strong>: <span class="quantity">Quantity Available</span><br/>
+                  <strong>Price</strong>: <span class="price">999</span><br/>       
+                  <strong>Status</strong>: <span class="status">Active</span><br/>                     
+                  <strong>Owner Name</strong>: <span class="owner-name">Owner 1</span><br/>     
+                  <strong>Owner Address</strong>: <span class="owner-address">0x0</span><br/>  
+                  <strong>Owner Type</strong>: <span class="owner-type">SHOP or SHOPPER</span><br/>     
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div id="productbuyTemplate" class="container" style="display: none;">
+              <label for="basic-url">Buy a Product</label>
+              <div class="input-group-prepend">
+                  <span class="input-group-text" id="basic-addon3">Product ID</span>
+              </div>              
+               <input type="text" class="form-control" id="productbuyid" aria-describedby="basic-addon3">          
+              <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon3">Quantity</span>
+               </div> 
+              <input type="text" class="form-control" id="productbuyquant" aria-describedby="basic-addon3">             
+    
+              <button class="btn btn-default btn-buy-product" type="button" data-id="0">Buy</button>
+              <p></p>
+              </div> 
+            </div>
+
+
+        
+
+          <div id="myproductTemplate" style="display: none;" >
+              <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="panel panel-default panel-myproduct">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">Scrappy</h3>
+                  </div>
+                  <div class="panel-body">
+                    <strong>ProductId</strong>: <span class="product-id">Product Id</span><br/> <!-- Its index-->
+                    <strong>Coin Id</strong>: <span class="coin-id">Coin ID</span><br/>
+                    <strong>Quantity Available</strong>: <span class="quantity">Quantity Available</span><br/>
+                    <strong>Price</strong>: <span class="price">999</span><br/>       
+                    <strong>Status</strong>: <span class="status">Active</span><br/>                     
+                    <strong>Owner Name</strong>: <span class="owner-name">Owner 1</span><br/>     
+                    <strong>Owner Address</strong>: <span class="owner-address">0x0</span><br/>  
+                    <strong>Owner Type</strong>: <span class="owner-type">SHOP or SHOPPER</span><br/>     
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/web3.min.js"></script>
+    <script src="js/truffle-contract.js"></script>
+    <script src="js/app.js"></script>
+  </body>
+</html>
